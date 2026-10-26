@@ -4,7 +4,7 @@
 
 \documentclass[10pt,letter]{article}
 \usepackage[titletoc,title]{appendix}
-\usepackage{natbib}
+\usepackage[numbers,square,sort&compress]{natbib}
 %\usepackage{biblatex}
 %\bibliography{enestmemo.bib}
 
@@ -13,6 +13,7 @@
 %\linenumbers
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{longtable}
 \usepackage{url}
 \usepackage[margin=1.5in]{geometry}
@@ -151,12 +152,18 @@
 \tableofcontents
 \newpage
 
-\section{Introduction} 
-text goes here 
+\section{Introduction}
+HESS J0632+057 was discovered by H.E.S.S. as a point-like very-high-energy (VHE) gamma-ray source in the Monoceros region~\citep{Aharonian2007}. Its position coincides with the Be star HD 259440 (MWC 148), and the variability of its X-ray counterpart led to the proposal that the system is a gamma-ray binary~\citep{Hinton2009}. Optical spectroscopy classifies HD 259440 as a B0pe star with a mass of 13.2--19.0~$M_\odot$ at a distance of 1.1--1.7~kpc~\citep{Aragona2010}.
+
+The binary nature of HESS J0632+057 was confirmed by the detection of an orbital period in the Swift-XRT light curve, first measured as $321 \pm 5$~days~\citep{Bongiorno2011} and later refined to $315^{+6}_{-4}$~days~\citep{Aliu2014} and $313^{+11}_{-8}$~days~\citep{Moritani2018}. A joint analysis of the H.E.S.S., MAGIC, and VERITAS data yielded a period of $\sim$317~days~\citep{Adams2021}, which is adopted in this analysis. The X-ray and VHE light curves show a sharp primary outburst and a broader secondary outburst, separated by a faint phase in which the source is barely detected, and the VHE emission is modulated in phase with the X-ray emission~\citep{Aliu2014, Adams2021, Moritani2018}.
+
+Despite these observations, the geometry of the system remains uncertain. The radial velocities of the Be star led to two different orbital solutions: a highly eccentric orbit ($e = 0.83$) by Casares et al.~\citep{Casares2012} and a less eccentric orbit ($e \approx 0.6$) with the periastron on the opposite side of the orbit by Moritani et al.~\citep{Moritani2018}. The nature of the compact object is also unknown, although the small mass function obtained by Moritani et al.\ suggests a neutron star.
+
+In this note, we present the analysis of HESS J0632+057 with $\sim$2886 days of HAWC Pass 5 data. Exploiting the continuous coverage of all orbital phases and the sensitivity of HAWC above 10~TeV, we measure the spectrum of HESS J0632+057 in four orbital-phase intervals and study its orbital modulation at the highest energies.
 
 
 \section{Data} 
-We use approximately 2886 days of HAWC data. The Pass 5 Final NN map with ML cut is used. The analysis bins are selected based on the recomended binning scheme for the declination of HESS J0632+057.
+We use approximately 2886 days of HAWC data. The Pass 5 Final NN map with ML cut is used~\citep{Albert2024}. The analysis bins are selected based on the recomended binning scheme for the declination of HESS J0632+057.
 The maptree, detector response file, and the bin list used in this analysis are listed below.
 \begin{itemize}[itemsep=0.1em]
     \item Maptree file:
@@ -175,7 +182,7 @@ B0C0Ea B0C0Eb B0C0Ec B0C0Ed B0C0Ee B1C0Ea B1C0Eb B1C0Ec B1C0Ed B1C0Ee B2C0Ea B2C
     \end{lstlisting}
 \end{itemize}
 \section{Map-making} 
-To study the orbital-phase dependence of HESS J0632+057, we divide the HAWC data into four orbital-phase intervals based on previous IACT and X-ray observations. We adopt an orbital period of 317 days and define phase zero as MJD 54857.0, corresponding to the date of the first Swift-XRT observation.
+To study the orbital-phase dependence of HESS J0632+057, we divide the HAWC data into four orbital-phase intervals based on previous IACT and X-ray observations~\citep{Bongiorno2011, Aliu2014, Adams2021}. We adopt an orbital period of 317 days~\citep{Adams2021} and define phase zero as MJD 54857.0, corresponding to the date of the first Swift-XRT observation~\citep{Bongiorno2011}.
 The four orbital states are defined as 
 
 \begin{itemize}
@@ -198,7 +205,7 @@ The reconstructed HAWC data, namely reduced dataset, are stored in individual ch
 The randomized background procedure is applied ti the high-energy bins, where limited event statistics can lead to unstable background estimates with the standard direct integration method. The final step is rejiggering, which smooths the background map on an angular scale of $0.5^\circ$. All scripts used for the map-making procedure can be found here: \href{https://gitlab.com/hawc-observatory/sandboxes/kyoungjh}{\texttt{map-making codes}}
 
 \subsection{Sanity Check with Crab}
-As a sanity check, we analyze the Crab Nebula in each phase-folded map. The Crab Nebula provides a stable reference source for validating the map-making procedure. It is modeled as a point source with a log parabola spectrum. Figure~\ref{fig:crab_sed} shows the SED of the Crab Nebula, and Table~\ref{tab:crab_fit} summarizes the best-fit spectral parameters obtained from each phase-folded map and the combined map. The best-fit spectral parameters are consistent among the phase-folded maps within their uncertainties. The corresponding TS values are also consistent with the different exposure times of the individual maps.
+As a sanity check, we analyze the Crab Nebula in each phase-folded map. The Crab Nebula provides a stable reference source for validating the map-making procedure. It is modeled as a point source with a log parabola spectrum, following previous HAWC measurements of the Crab Nebula~\citep{Abeysekara2019, Albert2024}. Figure~\ref{fig:crab_sed} shows the SED of the Crab Nebula, and Table~\ref{tab:crab_fit} summarizes the best-fit spectral parameters obtained from each phase-folded map and the combined map. The best-fit spectral parameters are consistent among the phase-folded maps within their uncertainties. The corresponding TS values are also consistent with the different exposure times of the individual maps.
 
 \begin{figure}[H]
     \centering
@@ -232,7 +239,7 @@ Medium      & {1189.66} & {2.251 -0.026 +0.025} & {-2.773 +/- 0.013} & {0.080 +/
 
 
 \section{Baseline Modeling} 
-The baseline modeling is performed using the combined map. We adopt a circular region of interest (ROI) with a radius of $3^\circ$, centered on the position of HESS J0632+057. The baseline analysis consists of two main steps: a systematic source search pipeline, followed by morphological and spectral modeling. Figure~\ref{fig:Combined_sigmap} shows the ROI.
+The baseline modeling is performed using the combined map. The likelihood fits in this analysis are carried out with the 3ML framework~\citep{Vianello2015} and the HAL plugin. We adopt a circular region of interest (ROI) with a radius of $3^\circ$, centered on the position of HESS J0632+057. The baseline analysis consists of two main steps: a systematic source search pipeline, followed by morphological and spectral modeling. Figure~\ref{fig:Combined_sigmap} shows the ROI.
 
 \begin{figure}[H]
     \centering
@@ -245,6 +252,72 @@ The baseline modeling is performed using the combined map. We adopt a circular r
 
 
 \subsection{Systematic Source Search}
+\label{sec:source_search}
+To identify the gamma-ray sources in the ROI without prior assumptions, we apply a systematic source search to the combined map. The search starts from a background-only model; diffuse Galactic emission is not included. Candidate sources are modeled as point sources with a power-law spectrum with an index of $-2.6$ and a pivot energy of 7~TeV. The search proceeds in two stages.
+
+\paragraph{Point source test.}
+In each step, a point source is added at the position of the most significant residual excess, and all free parameters of the model are refitted. The new source is kept if it improves the test statistic by $\Delta\mathrm{TS} \geq 25$, and the procedure is repeated until no further source passes this threshold. The first two steps add point sources with $\Delta\mathrm{TS} = 48$ and 29, respectively. The source candidate in the third step gives $\Delta\mathrm{TS} = 14$ and is rejected, so the point source test results in two sources.
+
+\paragraph{Extension and curvature test.}
+For each source, we then test whether an extended morphology (Gaussian on the sphere) or a curved spectrum (log parabola) is preferred over the point-like morphology and the power-law spectrum. A test is accepted if it improves the fit by $\Delta\mathrm{TS} \geq 16$. The results are summarized in Table~\ref{tab:source_search_tests}. Only the extension of Source~2 passes the threshold. The extension of Source~1 ($\Delta\mathrm{TS} = 15.9$) is marginally below the threshold.
+
+\begin{table}[H]
+\centering
+\caption{Results of the extension and curvature tests in the systematic source search. A test is accepted for $\Delta\mathrm{TS} \geq 16$.}
+\label{tab:source_search_tests}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l|c|c|c}
+\hline
+Source & Test & $\Delta\mathrm{TS}$ & Result \\
+\hline
+\multirow{2}{*}{Source 1} & Extension & 15.9 & Rejected \\
+                          & Curvature & 1    & Rejected \\
+\hline
+\multirow{2}{*}{Source 2} & Extension & 37   & Accepted \\
+                          & Curvature & 10   & Rejected \\
+\hline
+\end{tabular}
+\end{table}
+
+The final model of the systematic source search consists of a point source (Source~1) and an extended source (Source~2), both with a power-law spectrum. Their best-fit parameters are listed in Table~\ref{tab:source_search_result}. Source~1 is located at the position of HESS J0632+057, and Source~2 is associated with HAWC J0635+070. Figure~\ref{fig:source_search_residual} shows the residual significance map of the final model and the corresponding one-dimensional significance distribution, which is consistent with the expectation for background fluctuations (mean $= -0.022 \pm 0.013$, width $= 1.029 \pm 0.014$).
+
+\begin{table}[H]
+\centering
+\caption{Best-fit parameters of the final model of the systematic source search. $K$ is given at the pivot energy of 7~TeV.}
+\label{tab:source_search_result}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{l|c|c}
+\hline
+Parameter & Source 1 & Source 2 \\
+\hline
+RA (deg)                                          & $98.20 \pm 0.05$ & $98.58 \pm 0.07$ \\
+Dec (deg)                                         & $5.82 \pm 0.04$  & $6.55 \pm 0.08$ \\
+Extension (deg)                                   & --               & $0.34 \pm 0.07$ \\
+$K$ ($10^{-15}$~TeV$^{-1}$~cm$^{-2}$~s$^{-1}$)    & $2.6^{+0.7}_{-0.5}$ & $8.7^{+2.3}_{-1.8}$ \\
+Index                                             & $-2.94 \pm 0.12$ & $-2.45 \pm 0.09$ \\
+TS                                                & 26.58            & 65.80 \\
+\hline
+Association                                       & HESS J0632+057   & HAWC J0635+070 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.44\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/SourceSearch/final_residual_sigmap.png}
+        \caption{Residual significance map}
+    \end{subfigure}
+    \begin{subfigure}{0.54\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/SourceSearch/final_residual_hist.png}
+        \caption{1D significance distribution}
+    \end{subfigure}
+    \caption{Residual significance map of the final model of the systematic source search (left) and the one-dimensional distribution of the residual significance within the ROI (right). The positions of Source~1 and Source~2 are marked together with the catalog positions of HESS J0632+057 and HAWC J0635+070.}
+    \label{fig:source_search_residual}
+\end{figure}
+
 \subsection{Morphological and Spectral Modeling}
 After identifying candidate sources with the systematic source-search
 pipeline, we perform morphological and spectral modeling for Sources 1
@@ -363,27 +436,297 @@ Morphology & Spectrum & Morphology & Spectrum & & & \\
 
 \end{table}
 
+\subsection{Pivot Energy}
+\label{sec:pivot}
+The flux normalization $K$ and the photon index of a power-law spectrum are correlated unless $K$ is defined at the decorrelation energy of the measurement. To minimize this correlation, we scan the pivot energy from 1 to 60~TeV in steps of 1~TeV with the baseline model and compute the correlation coefficient $\rho(K,\mathrm{index})$ for each source. As shown in Figure~\ref{fig:pivot_scan}, $|\rho|$ is minimized at 5~TeV for HESS J0632+057 (Source~1) and at 7~TeV for HAWC J0635+070 (Source~2). We therefore adopt pivot energies of 5~TeV and 7~TeV for the two sources in all subsequent fits, including the phase-dependent analysis and the systematic studies. The pivot energy of 7~TeV used in the systematic source search (Section~\ref{sec:source_search}) was chosen before this optimization.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Plots/Combined/pivot_scan.png}
+    \caption{Absolute value of the correlation coefficient between $K$ and the photon index as a function of the pivot energy, for the baseline model (point source with a power-law spectrum for Source~1 and continuous injection diffusion with a cutoff power-law spectrum for Source~2). The minimum is reached at 5~TeV for Source~1 (HESS J0632+057) and at 7~TeV for Source~2 (HAWC J0635+070).}
+    \label{fig:pivot_scan}
+\end{figure}
+
 Figure~\ref{fig:baseline_sed} shows the resulting spectral energy
 distribution and energy-dependent emission obtained with the baseline
 model.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Plots/Combined/Combined_SED.png}
+    \caption{SED of HESS J0632+057 obtained from the combined map with the baseline model. The dashed line and the shaded band show the best-fit power-law spectrum and its uncertainty, and the labels give $\sqrt{\mathrm{TS}}$ of each flux point.}
+    \label{fig:baseline_sed}
+\end{figure}
 
 
 
 
 \section{Phase-dependent Analysis}
+\label{sec:phase}
 The baseline source model derived from the combined map is used as the starting point for the phase-dependent analysis. The four phase-folded maps corresponding to the first high, low, second high, and medium states are analyzed separately. Figure~\ref{tab:Sgi_map_phase_folded} shows the pre-trial significance maps for each orbital state. 
 The spectral properties of HESS J0632+057 are then compared among the four orbital states to investigate possible orbital modulation of the VHE gamma-ray emission.
 In the phase-dependent analysis, the spectral and morphological parameters of HAWC J0635+070 are fixed to the best-fit values obtained from the combined map. Since the phase-folded maps are constructed according to the orbital phase of HESS J0632+057, HAWC J0635+070 is assumed to remain unchanged among the four orbital states. In addition, the morphological parameters of HESS J0632+057 are fixed to the values obtained from the combined-map analysis because of the limited statistics in the individual phase-folded maps.
-Table~\ref{tab:best-fit_result_phase_folded} summarizes the best-fit results for each orbital state. Figure~\ref{tab:residual_map_phase_folded} shows the corresponding model and residual maps, together with the one-dimensional significance distributions.
-Enhanced gamma-ray flux is observed during the two high states, while the flux decreases during the low state. This behavior is consistent with the orbital flux variability previously observed by IACTs. The best-fit gamma-ray indices range from approximately 2.8 to 3.4 among the four orbital states. 
-Figure X~\ref{tab:SED_phase_folded} shows the SED of HESS J0632+057 for the four orbital states and compares the HAWC measurements with previous IACT results.
+Table~\ref{tab:best-fit_result_phase_folded} summarizes the best-fit results for each orbital state.
+% TODO: add the phase-folded model/residual maps and 1D significance distributions, then restore:
+% Figure~\ref{tab:residual_map_phase_folded} shows the corresponding model and residual maps, together with the one-dimensional significance distributions.
+Enhanced gamma-ray flux is observed during the two high states, while the flux decreases during the low state. This behavior is consistent with the orbital flux variability previously observed by IACTs~\citep{Aliu2014, Adams2021}. The best-fit gamma-ray indices range from approximately 2.7 to 3.4 among the four orbital states.
+Figure~\ref{tab:SED_phase_folded} shows the SED of HESS J0632+057 for the four orbital states and compares the HAWC measurements with previous IACT results~\citep{Adams2021}.
 
-\section{Discussions} 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Sigmap/high1_sigMap.png}
+        \caption{First high state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Sigmap/low_sigMap.png}
+        \caption{Low state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Sigmap/high2_sigMap.png}
+        \caption{Second high state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Sigmap/med_sigMap.png}
+        \caption{Medium state}
+    \end{subfigure}
+    \caption{Pre-trial significance maps of the ROI for the four phase-folded maps.}
+    \label{tab:Sgi_map_phase_folded}
+\end{figure}
 
-\section{Systematic studies} 
-text goes here
+\begin{table}[H]
+\centering
+\caption{Best-fit spectral parameters of HESS J0632+057 for the combined and phase-folded maps. $K$ is the flux normalization at 5~TeV in units of $10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$, and $\Gamma$ is the photon index. Only statistical uncertainties are given; the systematic uncertainties are listed in Table~\ref{tab:systematic}.}
+\label{tab:best-fit_result_phase_folded}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l|c|c|c}
+\hline
+Phase & Transits & $K$ & $\Gamma$ \\
+\hline
+Combined    & 2886.62 & $6.68^{+1.41}_{-1.43}$  & $-3.091^{+0.158}_{-0.169}$ \\
+\hline
+First high  & 521.927 & $12.06^{+3.26}_{-3.07}$ & $-2.870^{+0.213}_{-0.208}$ \\
+Low         & 575.175 & $2.38^{+2.41}_{-1.78}$  & $-3.437^{+0.289}_{-0.326}$ \\
+Second high & 595.732 & $9.48^{+2.94}_{-2.87}$  & $-2.712^{+0.280}_{-0.250}$ \\
+Medium      & 1189.66 & $4.44^{+2.11}_{-1.98}$  & $-3.122^{+0.222}_{-0.226}$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Phase-folded/high1_SED.png}
+        \caption{First high state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Phase-folded/low_SED.png}
+        \caption{Low state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Phase-folded/high2_SED.png}
+        \caption{Second high state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Phase-folded/med_SED.png}
+        \caption{Medium state}
+    \end{subfigure}
+    \caption{SEDs of HESS J0632+057 for the four orbital states. The HAWC flux points and best-fit power-law spectra are compared with the H.E.S.S., VERITAS, and MAGIC measurements in the corresponding orbital phases.}
+    \label{tab:SED_phase_folded}
+\end{figure}
+
+\section{Systematic studies}
+Systematic uncertainties of the free parameters in the final model are accounted for by varying the detector response files. The likelihood fit is repeated with each alternative detector response file, while the same map, ROI, bin list, and source model as in the nominal analysis are used. The detector response files used to study the systematic uncertainties are named with the following tags, grouped into four systematic sources:
+\begin{itemize}[itemsep=0.1em]
+    \item Broadpulse: \texttt{broadpulse-\char`\{0p00,0p50,0p75,1p25\char`\}},
+    \item Charge uncertainty: \texttt{charge-uncertainty-0p00}, \texttt{daqsim-config\_charge-uncertainty-0p06},
+    \item PMT threshold: \texttt{daqsim-config\_threshold-\char`\{0p15,0p25\char`\}},
+    \item Detector epoch: \texttt{run\_\char`\{4255,5214,5689,6283,6801,7578\char`\}}.
+\end{itemize}
+
+For each systematic source, the largest positive and the largest negative shifts of the best-fit value relative to the nominal result are evaluated. The total detector-response systematic uncertainty is obtained by adding the larger of the two shifts of each source in quadrature. To be conservative, the total is represented with $\pm$, regardless of the direction of the individual shifts. This procedure is applied to the combined map and to each of the four phase-folded maps. The resulting systematic uncertainties of the free parameters are summarized in Table~\ref{tab:systematic}. In the combined map, these are the position, flux normalization $K$, and photon index of HESS J0632+057 and the position, diffusion radius, $K$, photon index, and cutoff energy of HAWC J0635+070. In the phase-folded maps, only $K$ and the photon index of HESS J0632+057 are free.
+
+\begin{table}[H]
+\centering
+\caption{Systematic uncertainties of the free parameters in the final model. For each systematic source, the largest positive and negative shifts relative to the nominal result are listed; a single signed value is given when all variations of the source shift the parameter in the same direction. The last column is the quadratic sum of the larger shift of each source, represented with $\pm$. The normalizations $K$ are given in units of $10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$, at 5~TeV for HESS J0632+057 and at 7~TeV for HAWC J0635+070.}
+\label{tab:systematic}
+\renewcommand{\arraystretch}{1.45}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{l|cccc|c}
+\hline\hline
+Parameter & Broadpulse & Charge uncertainty & PMT threshold & Detector epoch & Quadratic summed \\
+\hline
+\multicolumn{6}{l}{Combined map} \\
+\hline
+J0632+057 RA (deg) & $-0.013$ & $-0.007$ & $-0.009$ & $-0.005$ & $\pm0.018$ \\
+J0632+057 Dec (deg) & $-0.009$ & $-0.007$ & $-0.007$ & $-0.006$ & $\pm0.015$ \\
+J0632+057 K ($10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$) & $-0.95$ & $-0.59$ & $-0.64$ & $^{+0.10}_{-0.35}$ & $\pm1.34$ \\
+J0632+057 index & $+0.061$ & $+0.063$ & $+0.047$ & $+0.077$ & $\pm0.126$ \\
+\hline
+J0635+070 RA (deg) & $^{+0.001}_{-0.002}$ & $^{+0.002}_{-0.005}$ & $^{+0.002}_{-0.003}$ & $^{+0.003}_{-0.002}$ & $\pm0.007$ \\
+J0635+070 Dec (deg) & $^{+0.005}_{-0.004}$ & $^{+0.002}_{-0.005}$ & $\pm0.002$ & $-0.003$ & $\pm0.008$ \\
+J0635+070 $r_{\mathrm{diff}}$ (deg) & $+0.015$ & $+0.019$ & $+0.016$ & $+0.027$ & $\pm0.039$ \\
+J0635+070 K ($10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$) & $^{+0.60}_{-2.47}$ & $^{+0.69}_{-1.12}$ & $^{+0.14}_{-1.22}$ & $^{+0.89}_{-0.25}$ & $\pm3.11$ \\
+J0635+070 index & $+0.092$ & $+0.092$ & $+0.070$ & $+0.069$ & $\pm0.163$ \\
+J0635+070 cutoff (TeV) & $-3.10$ & $-2.75$ & $-3.07$ & $-2.64$ & $\pm5.79$ \\
+\hline\hline
+\multicolumn{6}{l}{First high state} \\
+\hline
+J0632+057 K ($10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$) & $^{+0.12}_{-1.28}$ & $^{+0.16}_{-0.63}$ & $-0.63$ & $^{+0.61}_{-0.14}$ & $\pm1.67$ \\
+J0632+057 index & $^{+0.021}_{-0.043}$ & $^{+0.020}_{-0.010}$ & $^{+0.006}_{-0.005}$ & $+0.022$ & $\pm0.053$ \\
+\hline\hline
+\multicolumn{6}{l}{Low state} \\
+\hline
+J0632+057 K ($10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$) & $^{+0.07}_{-0.26}$ & $^{+0.11}_{-0.07}$ & $^{+0.04}_{-0.21}$ & $^{+0.07}_{-0.02}$ & $\pm0.36$ \\
+J0632+057 index & $^{+0.022}_{-0.012}$ & $+0.025$ & $+0.017$ & $^{+0.017}_{-0.010}$ & $\pm0.041$ \\
+\hline\hline
+\multicolumn{6}{l}{Second high state} \\
+\hline
+J0632+057 K ($10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$) & $^{+0.13}_{-1.07}$ & $^{+0.19}_{-0.54}$ & $-0.54$ & $^{+0.50}_{-0.12}$ & $\pm1.41$ \\
+J0632+057 index & $^{+0.018}_{-0.046}$ & $^{+0.022}_{-0.004}$ & $^{+0.006}_{-0.002}$ & $+0.023$ & $\pm0.056$ \\
+\hline\hline
+\multicolumn{6}{l}{Medium state} \\
+\hline
+J0632+057 K ($10^{-24}$~keV$^{-1}$~cm$^{-2}$~s$^{-1}$) & $^{+0.06}_{-0.61}$ & $^{+0.16}_{-0.34}$ & $-0.38$ & $^{+0.45}_{-0.15}$ & $\pm0.92$ \\
+J0632+057 index & $^{+0.016}_{-0.037}$ & $^{+0.026}_{-0.016}$ & $^{+0.004}_{-0.011}$ & $+0.041$ & $\pm0.062$ \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+Figure~\ref{fig:systematic_combined} shows the best-fit position, flux normalization, and photon index of HESS J0632+057 obtained with each alternative detector response for the combined map, and Figure~\ref{fig:systematic_phase} shows the same comparison for the four phase-folded maps. In the combined map, the best-fit position shifts by at most $0.013^\circ$ among the variations, well within its statistical uncertainty of $\sim0.04^\circ$. In the phase-folded maps, the position is fixed to the combined-map value, as described in Section~\ref{sec:phase}. The broadpulse variation gives the largest contribution to the systematic uncertainty on $K$ in all data sets. For the combined map, all alternative responses yield a harder photon index than the nominal response; following the conservative convention above, the total is nevertheless quoted symmetrically. In every data set, the total systematic uncertainties on $K$ and $\Gamma$ of HESS J0632+057 are smaller than the corresponding statistical uncertainties listed in Table~\ref{tab:best-fit_result_phase_folded}. Therefore, the orbital modulation of the flux discussed in Section~\ref{sec:phase} is not driven by the detector-response systematics.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Plots/Systematic/combined_HESSJ0632_systematics.png}
+    \caption{Best-fit RA, Dec, flux normalization $K$, and photon index $\Gamma$ of HESS J0632+057 obtained from the combined map with the nominal (NN) and alternative detector responses. The dashed lines indicate the nominal values.}
+    \label{fig:systematic_combined}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Systematic/high1_HESSJ0632_systematics.png}
+        \caption{First high state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Systematic/low_HESSJ0632_systematics.png}
+        \caption{Low state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Systematic/high2_HESSJ0632_systematics.png}
+        \caption{Second high state}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/Systematic/med_HESSJ0632_systematics.png}
+        \caption{Medium state}
+    \end{subfigure}
+    \caption{Same as Figure~\ref{fig:systematic_combined}, but for the four phase-folded maps. Only $K$ and $\Gamma$ are shown, since the position of HESS J0632+057 is fixed in the phase-folded analysis.}
+    \label{fig:systematic_phase}
+\end{figure}
+
+\section{Discussions}
+\label{sec:discussion}
+
+\subsection{Orbital Solution}
+\label{sec:orbit}
+The orbital parameters of HESS J0632+057 are still under debate. We consider two representative orbital solutions derived from optical spectroscopy of the Be companion, those of Casares et al.~\citep{Casares2012} and Moritani et al.~\citep{Moritani2018}, and examine where the four orbital-phase intervals used in this analysis are located on each orbit.
+
+The orbital parameters of the two solutions are summarized in Table~\ref{tab:orbit}. Casares et al.\ derived a highly eccentric orbit ($e = 0.83$) from the radial velocities of the absorption lines, folded with the 321-day period of Bongiorno et al.~\citep{Bongiorno2011}. Moritani et al.\ measured the radial velocities from the wings of the H$\alpha$ emission line and obtained a less eccentric orbit ($e = 0.64$) with the periastron on the opposite side of the orbit, adopting the 313-day period derived from the Swift-XRT light curve. Both works define phase zero at JD 2454857.5 (MJD 54857.0), which is the same phase zero used in this analysis.
+
+\begin{table}[H]
+\centering
+\caption{Orbital parameters of HESS J0632+057 for the two orbital solutions, as compiled in Table~1 of Moritani et al.~\citep{Moritani2018}. $\omega$ is the argument of periastron of the Be star, and $\phi_{\mathrm{peri}}$ is the orbital phase of periastron with phase zero at MJD 54857.0. The phases of apastron and of the superior and inferior conjunctions of the compact object are derived from these parameters.}
+\label{tab:orbit}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{l|c|c}
+\hline
+Parameter & Casares et al.~\citep{Casares2012} & Moritani et al.~\citep{Moritani2018} \\
+\hline
+$P_{\mathrm{orb}}$ (day)         & 321 & 313 \\
+$e$                              & $0.83 \pm 0.08$ & $0.64 \pm 0.29$ \\
+$\omega$ (deg)                   & $129 \pm 17$ & $271 \pm 29$ \\
+$a_1 \sin i$ (AU)                & $0.362 \pm 0.261$ & $0.120 \pm 0.029$ \\
+\hline
+$\phi_{\mathrm{peri}}$           & 0.967 & 0.663 \\
+$\phi_{\mathrm{apa}}$            & 0.467 & 0.163 \\
+Superior conjunction             & 0.063 & 0.663 \\
+Inferior conjunction             & 0.961 & 0.153 \\
+\hline
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:orbit} shows the orbit of the compact object relative to the Be star for each solution, with the four orbital-phase intervals of this analysis. The two solutions place the HAWC orbital states at very different positions:
+\begin{itemize}[itemsep=0.1em]
+    \item In the Casares et al.\ solution, periastron and both conjunctions fall within the medium state ($\phi = 0.8$--$0.2$), and apastron falls within the low state. The first and second high states occur before and after apastron, respectively, where the compact object is far from the Be star ($r > 1.2a$).
+    \item In the Moritani et al.\ solution, periastron, which almost coincides with the superior conjunction, falls within the second high state, and apastron, which almost coincides with the inferior conjunction, falls within the medium state. The first high state occurs after apastron, and the low state covers the approach to periastron.
+\end{itemize}
+
+The orbital periods adopted in the two solutions (321 and 313 days) differ from the 317-day period used to fold the HAWC data. Here we adopt the published periastron phases with the common phase zero. Because the difference in period accumulates over the $\sim$10 orbital cycles covered by the HAWC data, the orbital positions in Figure~\ref{fig:orbit} should be regarded as approximate.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Plots/Discussion/orbit_solutions.png}
+    \caption{Orbit of the compact object relative to the Be star (star symbol) for the orbital solutions of Casares et al.~\citep{Casares2012} (left) and Moritani et al.~\citep{Moritani2018} (right), drawn in the orbital plane in units of the semi-major axis $a$. The observer is located towards the bottom. The colored segments indicate the four orbital-phase intervals of this analysis, and the crosses mark the orbital phase in steps of 0.1.}
+    \label{fig:orbit}
+\end{figure}
+% TODO: discuss the implications for the two high states (e.g., outbursts near apastron vs. periastron passage, Be disk interaction).
+
+\subsection{HAWC Energy Range}
+\label{sec:energy_range}
+HAWC is sensitive to gamma rays up to energies beyond the range covered by the IACT observations of HESS J0632+057, providing a complementary view of the high-energy end of the spectrum.
+
+To quantify the energy range over which HESS J0632+057 is detected, we multiply the best-fit power-law spectrum of each state by a step function. For the minimum energy, the step function removes the emission below a cut energy $E_{\mathrm{cut}}$; for the maximum energy, it removes the emission above $E_{\mathrm{cut}}$. The spectral parameters of HESS J0632+057 and the model of HAWC J0635+070 are fixed to their best-fit values, and only $E_{\mathrm{cut}}$ is scanned. The minimum (maximum) energy is defined as the value of $E_{\mathrm{cut}}$ at which the fit becomes worse than the best-fit model without the step function by $\Delta\mathrm{TS} = 2\Delta(-\log L) = 1$, i.e.\ at the $1\sigma$ level. This follows the definition used in the HAWC analysis note on LS 5039. The resulting energy ranges are listed in Table~\ref{tab:energy_range}.
+% TODO: add a reference to the HAWC LS 5039 analysis note (Section 5.2.3).
+% NOTE: inputs are the NN nominal fits (detRes-nn-pass5f_ML-refit, Combined_bin.txt, ROI 10 deg) for the states and the
+%       pl_cutoffpl fit (bin list without B0-B2, ROI 8 deg) for the combined map; source:
+%       /home/junho/HESSJ0632/likelihood/temp/energy_range/energy_range_summary.csv (Linux server).
+%       2 and 3 sigma values are available there but not quoted here.
+
+\begin{table}[H]
+\centering
+\caption{$1\sigma$ ($\Delta\mathrm{TS} = 1$) energy range of HESS J0632+057 for each data set, obtained with the step-function method described in the text. The spectral parameters are fixed to their best-fit values, so the systematic uncertainties are not included.}
+\label{tab:energy_range}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{l|c|c}
+\hline
+Phase & $E_{\mathrm{min}}$ (TeV) & $E_{\mathrm{max}}$ (TeV) \\
+\hline
+Combined    & 0.44 & 20.6 \\
+\hline
+First high  & 0.20 & 44.2 \\
+Low$^{a}$   & 0.43 & 0.80 \\
+Second high & 0.64 & 22.6 \\
+Medium$^{b}$ & 1.43 & 3.55 \\
+\hline
+\multicolumn{3}{l}{\footnotesize $^{a}$ Not significantly detected ($\Delta\mathrm{TS} \approx 2$ when the source is removed); not a physical energy range.} \\
+\multicolumn{3}{l}{\footnotesize $^{b}$ Weak signal (total $\Delta\mathrm{TS} \approx 7$).} \\
+\end{tabular}
+\end{table}
+
+The emission of HESS J0632+057 is detected up to $\sim$21~TeV in the combined map, and up to $\sim$44~TeV and $\sim$23~TeV in the first and second high states, respectively, extending beyond the energies covered by the IACT measurements (Figure~\ref{tab:SED_phase_folded}). In the low state, the source is not significantly detected, so the quoted range should not be interpreted as a physical energy range. In the medium state, the $1\sigma$ range is defined but the signal is weak.
+% TODO:
+% - The combined spectrum is well described by a power law, and a cutoff power law is not significantly preferred (Section 4.2).
+%   Use this to derive a lower limit on the maximum energy of the gamma rays and hence of the accelerated electrons.
+% - Comment on the Klein-Nishina regime and the implications for the acceleration efficiency.
+% - Compare the HAWC spectral indices with the IACT indices in each orbital state.
+
 %\section{Systematic Uncertainties} 
 
-\section{References} 
-text goes here
+\phantomsection
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{unsrt}
+\bibliography{references}
 \end{document}
