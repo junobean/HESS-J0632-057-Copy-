@@ -467,8 +467,7 @@ The baseline source model derived from the combined map is used as the starting 
 The spectral properties of HESS J0632+057 are then compared among the four orbital states to investigate possible orbital modulation of the VHE gamma-ray emission.
 In the phase-dependent analysis, the spectral and morphological parameters of HAWC J0635+070 are fixed to the best-fit values obtained from the combined map. Since the phase-folded maps are constructed according to the orbital phase of HESS J0632+057, HAWC J0635+070 is assumed to remain unchanged among the four orbital states. In addition, the morphological parameters of HESS J0632+057 are fixed to the values obtained from the combined-map analysis because of the limited statistics in the individual phase-folded maps.
 Table~\ref{tab:best-fit_result_phase_folded} summarizes the best-fit results for each orbital state.
-% TODO: add the phase-folded model/residual maps and 1D significance distributions, then restore:
-% Figure~\ref{tab:residual_map_phase_folded} shows the corresponding model and residual maps, together with the one-dimensional significance distributions.
+
 Enhanced gamma-ray flux is observed during the two high states, while the flux decreases during the low state. This behavior is consistent with the orbital flux variability previously observed by IACTs~\citep{Aliu2014, Adams2021}. The best-fit gamma-ray indices range from approximately 2.7 to 3.4 among the four orbital states.
 Figure~\ref{tab:SED_phase_folded} shows the SED of HESS J0632+057 for the four orbital states and compares the HAWC measurements with previous IACT results~\citep{Adams2021}.
 
@@ -682,18 +681,12 @@ The orbital periods adopted in the two solutions (321 and 313 days) differ from 
     \caption{Orbit of the compact object relative to the Be star (star symbol) for the orbital solutions of Casares et al.~\citep{Casares2012} (left) and Moritani et al.~\citep{Moritani2018} (right), drawn in the orbital plane in units of the semi-major axis $a$. The observer is located towards the bottom. The colored segments indicate the four orbital-phase intervals of this analysis, and the crosses mark the orbital phase in steps of 0.1.}
     \label{fig:orbit}
 \end{figure}
-% TODO: discuss the implications for the two high states (e.g., outbursts near apastron vs. periastron passage, Be disk interaction).
 
 \subsection{HAWC Energy Range}
 \label{sec:energy_range}
 HAWC is sensitive to gamma rays up to energies beyond the range covered by the IACT observations of HESS J0632+057, providing a complementary view of the high-energy end of the spectrum.
 
 To quantify the energy range over which HESS J0632+057 is detected, we multiply the best-fit power-law spectrum of each state by a step function. For the minimum energy, the step function removes the emission below a cut energy $E_{\mathrm{cut}}$; for the maximum energy, it removes the emission above $E_{\mathrm{cut}}$. The spectral parameters of HESS J0632+057 and the model of HAWC J0635+070 are fixed to their best-fit values, and only $E_{\mathrm{cut}}$ is scanned. The minimum (maximum) energy is defined as the value of $E_{\mathrm{cut}}$ at which the fit becomes worse than the best-fit model without the step function by $\Delta\mathrm{TS} = 2\Delta(-\log L) = 1$, i.e.\ at the $1\sigma$ level. This follows the definition used in the HAWC analysis note on LS 5039. The resulting energy ranges are listed in Table~\ref{tab:energy_range}.
-% TODO: add a reference to the HAWC LS 5039 analysis note (Section 5.2.3).
-% NOTE: inputs are the NN nominal fits (detRes-nn-pass5f_ML-refit, Combined_bin.txt, ROI 10 deg) for the states and the
-%       pl_cutoffpl fit (bin list without B0-B2, ROI 8 deg) for the combined map; source:
-%       /home/junho/HESSJ0632/likelihood/temp/energy_range/energy_range_summary.csv (Linux server).
-%       2 and 3 sigma values are available there but not quoted here.
 
 \begin{table}[H]
 \centering
@@ -717,13 +710,6 @@ Medium$^{b}$ & 1.43 & 3.55 \\
 \end{table}
 
 The emission of HESS J0632+057 is detected up to $\sim$21~TeV in the combined map, and up to $\sim$44~TeV and $\sim$23~TeV in the first and second high states, respectively, extending beyond the energies covered by the IACT measurements (Figure~\ref{tab:SED_phase_folded}). In the low state, the source is not significantly detected, so the quoted range should not be interpreted as a physical energy range. In the medium state, the $1\sigma$ range is defined but the signal is weak.
-% TODO:
-% - The combined spectrum is well described by a power law, and a cutoff power law is not significantly preferred (Section 4.2).
-%   Use this to derive a lower limit on the maximum energy of the gamma rays and hence of the accelerated electrons.
-% - Comment on the Klein-Nishina regime and the implications for the acceleration efficiency.
-% - Compare the HAWC spectral indices with the IACT indices in each orbital state.
-
-%\section{Systematic Uncertainties} 
 
 \phantomsection
 \addcontentsline{toc}{section}{References}
